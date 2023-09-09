@@ -29,7 +29,7 @@ const AdjacentPosts = ({ createdAt, slug }) => {
               <AdjacentPostCard post={adjacentPost.next} position="RIGHT" />
             </div>
           )}
-        </>
+          </>
       )}
     </div>
   );
