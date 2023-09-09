@@ -2,23 +2,13 @@
 import { PostCard, Categories, PostWidget } from '@/components';
 import { FeaturedPosts } from '@/sections';
 import { getPosts } from '@/services';
-import { redirect, useSearchParams } from 'next/navigation';
 
 async function getposts() {
   const posts = (await getPosts()) || [];
   return posts;
 }
 
-function checkredirect(){
-    const searchParams = useSearchParams();
-    const app = searchParams.get('app');
-    if(!app){
-      redirect('/post/react-testing?app=true');
-    }
-}
-
 export default async function Home() {
-  checkredirect();
   const posts = await getposts();
   return (
     <main className="container mx-auto px-10 mb-8">
