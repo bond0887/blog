@@ -16,7 +16,7 @@ const Header = () => {
     <div className='container mx-auto px-10 mb-8'>
         <div className='border-b w-full inline-block border-black-400 py-8'>
             <div className='md:float-left block'>
-                <Link href='/'>
+                <Link href='/?app=true'>
                     <span className='cursor-pointer font-bold text-4xl text-white'>
                         BLOG | SURAJ JINDAL
                     </span>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams, redirect } from 'next/navigation';
 import { getPostDetails } from '@/services';
 import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '@/components';
 import { AdjacentPosts } from '@/sections';
@@ -9,6 +9,11 @@ import { AdjacentPosts } from '@/sections';
 
 async function getposts() {
     const params = useParams();
+    const searchParams = useSearchParams();
+    const app = searchParams.get('app');
+    if(params.slug=='react-testing' && app){
+        redirect('/?app=true');
+    }
     const data = await getPostDetails(params.slug)
     return data;
 }
