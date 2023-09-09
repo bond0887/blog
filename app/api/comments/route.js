@@ -1,9 +1,11 @@
 import { gql, GraphQLClient } from "graphql-request";
+import { NextResponse } from 'next/server'
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 export async function POST(req, res){
     const body = await req.json()
+    const { name, email, comment, slug } = body;
     const graphQLClient = new GraphQLClient(graphqlAPI, {
         headers:{
             authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`
@@ -14,17 +16,10 @@ export async function POST(req, res){
         mutation CreateComment($name: String!, $email: String!, $comment: String!, $slug: String!){
             createComment(data: {name: $name, email: $email, comment: $comment, post: {connect: {slug: $slug}} }) { id }
         }
-    `
+    `;
 
-    const result = await graphQLClient.request(query, {
-        name: body.name,
-        email: body.email,
-        comment: body.comment,
-        slug: body.slug
-    });
+    const result = await graphQLClient.request(query, {name,email,comment,slug});
+    const data = await result;
 
-    console.log(res);
-    console.log("break");
-    console.log(result);
-    return result.createComment.id;
+    return NextResponse.json(data)
 }
