@@ -23,5 +23,8 @@ export async function POST(req, res){
         slug: body.slug
     });
 
+    console.log(res);
+    console.log("break");
+    console.log(result);
     return result.createComment.id;
 }
