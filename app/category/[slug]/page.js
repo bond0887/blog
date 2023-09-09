@@ -4,9 +4,6 @@ import React from 'react';
 import { useParams } from 'next/navigation';
 import { getCategoryPost } from '@/services';
 import { PostCard, Categories, Loader } from '@/components';
-import { useRouter } from 'next/navigation';
-
-
 
 
 
@@ -18,11 +15,6 @@ async function getcategoryposts() {
 
 
 export default async function PostDetails() {
-    const router = useRouter();
-
-    if (router.isFallback) {
-      return <Loader />;
-    }
     const posts = await getcategoryposts();
     return (
         <div className='container mx-auto px-10 mb-8'>

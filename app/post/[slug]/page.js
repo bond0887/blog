@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 import { getPostDetails } from '@/services';
 import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '@/components';
 import { AdjacentPosts } from '@/sections';
-import { useRouter } from 'next/navigation';
 
 
 async function getposts() {
@@ -16,12 +15,6 @@ async function getposts() {
 
 
 export default async function PostDetails() {
-    const router = useRouter();
-
-    if (router.isFallback) {
-      return <Loader />;
-    }
-    
     const post = await getposts();
     return (
         <div className='container mx-auto px-10 mb-8'>
