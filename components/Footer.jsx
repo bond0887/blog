@@ -4,7 +4,7 @@ import {  FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <div className='flex w-full bg-white justify-between bg-opacity-20 px-16 py-5'>
+    <div className='flex max-[410px]:flex-col-reverse max-[410px]:gap-5 max-[410px]:items-center w-full bg-white justify-between bg-opacity-20 px-16 py-5'>
         <div className='text-white flex space-x-10 font-bold text-2xl'>
             <div className='cursor-pointer hover:text-pink-600'>
                 <a href='https://github.com/bond0887' target="_blank" rel="noreferrer"><FaGithub /></a>
